@@ -63,8 +63,4 @@
         <button class="btn btn-primary" [disabled]="!employeeFormGroup.valid">Submit</button>
         <button type="button" class="btn btn-secondary" (click)="loadEmployee()">Load Employee</button>
     </form>
-    <pre>Form Status: {{employeeFormGroup.status}}</pre>
-    <pre>Firstname: {{firstName.value}}</pre>
-    <pre>Range: {{range.value}}</pre>
-    <pre>Form Value:{{employeeFormGroup.value | json}} </pre>
 </div>
