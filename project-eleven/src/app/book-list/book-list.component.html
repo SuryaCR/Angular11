@@ -1,0 +1,38 @@
+<div class="page-header">
+    <div class="list-group">
+      <div
+        *ngFor="let item of books; let idx = index; let isFirst = first"
+        class="list-group-item">
+        <b>Count :
+        <span class="badge text-danger" [innerText]="idx + 1"></span></b>
+        <h4>{{ item.name | uppercase }} - {{ item.publishDate | date:'MMM YYY' }}</h4>
+        <img [src]="item.images[0].thumb" alt="3 Zeros" />
+        <h5>Price : <s>{{ item.price | currency:'INR':true }}</s>&nbsp;&nbsp;<span class="text-danger">{{ item.discount1 }}% OFF</span></h5>
+        <h4>Discount Price : <span class="text-danger">{{ item.price | priceDiscount:item.discount | currency:'INR':true }}</span></h4>
+        <p><b>Author : {{ item.author }}</b></p>
+        <button class="btn btn-primary" type="button" (click)="onBuy(item)">
+          Buy
+        </button>
+        <!-- <pre>{{item | json}}</pre> -->
+        <hr />
+        <section>
+          <ul class="nav nav-pills">
+            <li>
+              <a href (click)="onTabChange($event, 10+idx)" [class.active]="isTabSelected(10+idx)" >Description</a>
+            </li>
+            <li>
+              <a href (click)="onTabChange($event, 20+idx)" [class.active]="isTabSelected(20+idx)" >Review</a>
+            </li>
+            <li>
+              <a href (click)="onTabChange($event, 30+idx)" [class.active]="isTabSelected(30+idx)" >Comments</a>
+            </li>
+          </ul>
+        </section>
+        <div class="panel" *ngIf="isTabSelected(10+idx)">
+          {{ item.description }}
+        </div>
+        <div class="panel" *ngIf="isTabSelected(20+idx)">Review Not Available</div>
+        <div class="panel" *ngIf="isTabSelected(30+idx)">Comments Not Available</div>
+      </div>
+    </div>
+  </div>

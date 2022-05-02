@@ -1,0 +1,12 @@
+<div>
+    <h4>{{ book.name | uppercase }} - {{book.publishDate | date:'MMM YYY'}}</h4>
+      <h5>Price : <s>{{ book.price | currency:'INR':true}}</s>&nbsp;&nbsp;<span class="text-danger">{{book.discount1}}% OFF</span></h5>
+      <h4>Discount Price : <span class="text-danger">{{book.price | priceDiscount:book.discount | currency:'INR':true}}</span></h4>
+      <p><b>Author : {{ book.author }}</b></p>
+      <img [src]="book.images[0].thumb" alt="3 Zeros" />
+      <br><br>
+      <button class="btn btn-primary" type="button" (click)="onBuy(book)">
+        Buy
+      </button>
+      <!-- <pre>{{book | json}}</pre> -->
+</div>
